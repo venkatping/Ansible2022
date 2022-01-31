@@ -1,0 +1,13 @@
+---
+ - hosts: testing
+   become: true
+   become_user: root
+   tasks:
+     - name: Copy a "hosts" file on the remote machine for editing
+       copy:
+         src: /etc/hosts
+         dest: /home/
+         owner: root
+         group: ansible
+         mode: 0655
+         remote_src: yes

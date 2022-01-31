@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+      - name: create a test file
+        shell: echo " Hello, World! " > /tmp/test_file #when we run this the content will not store in test_file so we are using debug now
+        register: command_output
+      - debug: var=command_output

@@ -1,0 +1,25 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+      - name: ensure file exists
+        file:
+            path: $HOME/test_file
+            state: touch
+      - name: create symbolic link to test_file
+        file:
+            src: $HOME/test_file
+            dest: $HOME/test_file_link
+            state: link
+      - name: remove symbolic link
+        file:
+           path: $HOME/test_file_link
+           state: absent
+      - name: remove both symbolic link and test_file
+        file:
+           path: "$HOME/{{ item }}"
+           state: absent
+        loop:
+           - test_file
+           - test_file_link

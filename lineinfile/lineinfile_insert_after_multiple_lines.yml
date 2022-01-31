@@ -1,0 +1,12 @@
+---
+- hosts: dev
+  tasks:
+      - name: insert lines after
+        lineinfile:
+                 dest: "/home/{{ ansible_user }}/test_file.txt"
+                 line: "{{ item.line }}"
+                 insertafter: '^selinux'
+        with_items:
+               - {line: 'username=district'}
+               - {line: 'username=village'}
+        

@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+      - name: write content to a file
+        copy:
+           dest: "/home/ansible/test_file"
+           content: "Need to Learn Ansible!\n"
+      - name: write content to second file
+        copy:
+           dest: "/home/ansible/test_file1"
+           content: "Hello, {{ ansible_host }}\n"

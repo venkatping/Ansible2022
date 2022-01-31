@@ -1,0 +1,10 @@
+---
+- hosts: testing
+  become: true
+  become_user: root
+  tasks:
+    - name: Copy a new "chrony.conf" file into place, backing up the original if it differs from the copied version
+      copy:
+        src: /etc/chrony.conf
+        dest: /etc/chrony.conf
+        backup: yes

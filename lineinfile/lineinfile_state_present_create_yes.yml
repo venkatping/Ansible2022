@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  tasks:
+      - name: Insert a line in a file
+        lineinfile:
+                dest: "/home/{{ ansible_user }}/test_file.txt"
+                line: "insert a line with lineinfile module"
+                state: present
+                create: yes

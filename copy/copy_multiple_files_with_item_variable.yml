@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+     - name: copy multiple files with item
+       copy:
+          src: "{{ item.src }}"
+          dest: "{{ item.dest }}"
+          mode: "{{ item.mode }}"
+       with_items:
+          - { src: '/home/ansible/ansible/copy/test_file1', dest: '/tmp/', mode: '644' }
+          - { src: '/home/ansible/ansible/copy/test_file2', dest: '/tmp/', mode: '777' }

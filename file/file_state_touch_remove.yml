@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  tasks:
+      - name: create a file
+        file:
+            path: /root/test_file.txt
+            state: touch
+        become: true
+      - name: remove a file
+        file:
+            path: /root/test_file.txt
+            state: absent
+        become: true

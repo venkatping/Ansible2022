@@ -1,0 +1,15 @@
+---
+- hosts: dev
+  tasks:
+      - name: ensure directory exists
+        file:
+           path: $HOME/test_directory
+           state: directory
+      - name: change permissions
+        file:
+           path: "/home/{{ ansible_ssh_user }}/test_directory"
+           state: directory
+           owner: root
+           group: root
+           mode: 0755
+        become: true

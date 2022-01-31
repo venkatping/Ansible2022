@@ -1,0 +1,17 @@
+---
+- hosts: testing
+  become: true
+  become_user: root
+  tasks:
+        - name: check kernel version
+          command: uname -r
+          register: kernel_output
+        - debug: var=kernel_output.stdout_lines
+        - name: check os version
+          command: cat /etc/centos-release
+          register: os_output
+        - debug: var=os_output.stdout_lines
+        - name: check uptime
+          command: uptime
+          register: uptime_output
+        - debug: var=uptime_output.stdout_lines

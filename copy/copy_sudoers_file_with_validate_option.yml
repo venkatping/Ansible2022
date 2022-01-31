@@ -1,0 +1,11 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+    - name: Copy a new "sudoers" file into place, after passing validation with visudo
+      copy:
+        src: /etc/sudoers
+        dest: /home/ansible/
+        validate: /sbin/visudo -cf %s
+        remote_src: true
