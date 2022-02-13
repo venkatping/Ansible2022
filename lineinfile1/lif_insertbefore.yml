@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  tasks:
+      - name: insert a lin with insertbefore option
+        lineinfile:
+                dest: /home/ansible/test_file.txt
+                insertbefore: '192.168.0.108.900'
+                line: 'localhost4'
+                state: present

@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  tasks:
+      - name: remove a line in a file
+        lineinfile:
+                dest: /home/ansible/test_file.txt
+                regexp: '192\.168\.0\.108'
+                state: absent
+                backup: yes

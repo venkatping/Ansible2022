@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  tasks:
+      - name: insert a line with lineinfile module
+        lineinfile:
+                dest: /home/ansible/test_file.txt
+                line: "{{ item.line }}"
+                state: present
+                create: yes
+        loop:
+             - {line: 'localhost'}
+             - {line: 'localhost 127.0.0.1'}
+             - {line: '127.0.0.1'}
