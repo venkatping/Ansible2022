@@ -1,0 +1,13 @@
+#In Ansible, we have various modules that work with variables and are used to get or set variable values.
+#One such important module is set_fact. This module is used to set new variables
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+          - name: set a fact
+            set_fact:
+                    our_fact: Ansible Rocks!
+          - name: show custom fact
+            debug:
+                    msg: "{{ our_fact }}"
