@@ -1,0 +1,11 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+          - name: check os version
+            shell: cat /etc/*release
+            register: command_output
+          - name: show output
+            debug:
+                    var: command_output

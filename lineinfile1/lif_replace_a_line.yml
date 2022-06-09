@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  tasks:
+      - name: replace a line with lineinfile module
+        lineinfile:
+                dest: /home/ansible/test_file.txt
+                regexp: '127\.0\.0\.1'
+                line: "192.168.0.108"
+                state: present

@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+          - name: get hostname
+            command: hostname -s
+            register: command_output
+          - debug:
+                  var: command_output.stdout

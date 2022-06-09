@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  tasks:
+      - name: insert a line with insert after and first match options
+        lineinfile:
+                dest: /home/ansible/test_file.txt
+                insertafter: '192.168.0.108'
+                line: 'localhost1'
+                state: present
+                firstmatch: yes

@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+      - name: create multiple directories
+        file:
+           path: "$HOME/{{ item }}"
+           state: directory
+        loop:
+           - test_directory1
+           - test_directory2
+           - test_directory3

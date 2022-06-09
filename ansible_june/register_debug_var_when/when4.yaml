@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+          - name: working on when
+            command: hostname -s
+            when:
+               - ansible_distribution == "Ubuntu"
+               - ansible_distribution_major_version | int >= 18
+            register: hostname_output
+          - debug:
+                  var: hostname_output.stdout

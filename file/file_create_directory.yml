@@ -1,0 +1,9 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+      - name: ensure directory exists
+        file:
+           path: $HOME/test_directory
+           state: directory

@@ -1,0 +1,19 @@
+---
+- hosts: dev
+  tasks:
+      - name: ensure file exists
+        copy:
+           dest: "/home/{{ ansible_user }}/{{ item }}"
+           content: "{{ ansible_distribution\n }}"
+        loop:
+           - test_file1.txt
+           - test_file2.txt
+      - name: fetch files from remote server
+        fetch:
+           src: "/home/{{ ansible_user }}/{{ item }}"
+           dest: "fetched/{{ inventory_hostname }}/"
+           flat: true
+        loop:
+           - test_file1.txt
+           - test_file2.txt
+      

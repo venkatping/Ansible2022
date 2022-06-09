@@ -1,0 +1,13 @@
+---
+- hosts: dev
+  become: true
+  become_user: root
+  tasks:
+          - name: ensure directory exists
+            file:
+                 path: /tmp/chdir
+                 state: directory
+          - name: create file in diff directory
+            command: touch test_file
+            args:
+                 chdir: /tmp/chdir

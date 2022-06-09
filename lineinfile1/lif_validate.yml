@@ -1,0 +1,11 @@
+---
+- hosts: dev
+  tasks:
+      - name: replace a line with lineinfile module
+        lineinfile:
+                dest: /etc/sudoers
+                line: 'kuberne ALL=(ALL) NOPASSWD: ALL'
+                state: present
+                validate: '/usr/sbin/visudo -c -f %s'
+        become: yes
+        become_user: root

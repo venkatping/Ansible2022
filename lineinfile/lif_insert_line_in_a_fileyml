@@ -1,0 +1,14 @@
+---
+- hosts: dev
+  tasks:
+      - name: insert a line in configuration file
+        become: yes
+        become_user: root
+        lineinfile:
+                 path: /home/{{ ansible_user }}/test_file.txt
+                 line: "LogLevel debug"
+                 state: present
+                 backup: yes
+        when: ansible_distribution == "CentOS"
+        register: example
+      - debug: var=example.stdout

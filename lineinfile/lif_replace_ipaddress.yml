@@ -1,0 +1,16 @@
+---
+- hosts: dev
+  tasks:
+      - name: Insert IPAddress
+        become: yes
+        become_user: root
+        lineinfile:
+                 path: /home/{{ ansible_user }}/test_file1.txt
+                 regexp: '127\.0\.0\.1'
+                 line: '192.168.43.105'
+                 #regexp: '192\.168\.0\.145'
+                 state: present
+                 create: yes
+        when: ansible_distribution == "CentOS"
+        register: example
+      - debug: var=example.stdout

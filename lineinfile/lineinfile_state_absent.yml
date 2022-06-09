@@ -1,0 +1,8 @@
+---
+- hosts: dev
+  tasks:
+      - name: remove line in lineinfile.txt file
+        lineinfile:
+                 dest: "/home/{{ ansible_user }}/lineinfile.txt"
+                 line: This line is inserted with lineinfile module
+                 state: absent

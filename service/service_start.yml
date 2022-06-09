@@ -1,0 +1,15 @@
+---
+- hosts: dev
+  become: yes
+  become_user: root
+  tasks:
+       - name: start httpd service
+         service:
+               name: httpd
+               state: started
+         when: ansible_distribution == "CentOS"
+       - name: start apache2 service
+         service:
+              name: apache2
+              state: started
+         when: ansible_distribution != "CentOS"

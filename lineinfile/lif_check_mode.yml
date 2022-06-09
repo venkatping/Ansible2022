@@ -1,0 +1,15 @@
+---
+- hosts: dev
+  tasks:
+      - name: check the line is present or not in configuration file
+        become: yes
+        become_user: root
+        lineinfile:
+                 path: /etc/httpd/conf/httpd.conf
+                 line: "LogLevel debug"
+                 state: present
+                 backup: yes
+        when: ansible_distribution == "CentOS"
+        check_mode: yes
+        register: example
+      - debug: var=example.stdout

@@ -1,0 +1,12 @@
+---
+- hosts: testing
+  become: true
+  become_user: root
+  tasks:
+        - name: example copying file with owner and permissions
+          copy:
+            src: /etc/hosts
+            dest: /home/ansible/
+            owner: ansible
+            group: ansible
+            mode: 0644

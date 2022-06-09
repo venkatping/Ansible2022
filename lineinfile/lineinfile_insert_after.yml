@@ -1,0 +1,8 @@
+---
+- hosts: dev
+  tasks:
+      - name: insert content after a line
+        lineinfile:
+                 dest: "/home/{{ ansible_user }}/test_file.txt"
+                 line: "selinux=enforcing"
+                 insertafter: '\[defaults\]'
