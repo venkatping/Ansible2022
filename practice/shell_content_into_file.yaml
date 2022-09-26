@@ -1,0 +1,8 @@
+---
+- name: write a content to a file
+  hosts: dev
+  tasks:
+          - name: using shell module to write content to a file
+            shell: echo "Hello World!" > /tmp/test_file
+            register: command_output
+          - debug: var=command_output

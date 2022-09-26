@@ -1,0 +1,11 @@
+---
+- name: copy directory from local to remote server
+  hosts: dev
+  tasks:
+          - name: copy directory using copy module
+            copy:
+                    src: /home/ansible/ansible
+                    dest: /home/ansible
+            register: dir_output
+          - debug:
+                  msg: "{{ dir_output }}"

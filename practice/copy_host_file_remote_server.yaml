@@ -1,0 +1,14 @@
+---
+- name: copy a file to remote server
+  hosts: dev
+  tasks:
+          - name: copying hosts file to remoter server
+            copy:
+                    src: /etc/hosts
+                    dest: /home/ansible
+                    owner: ansible
+                    group: ansible
+                    mode: 0777
+            register: copy_out
+          - debug:
+                  msg: "{{ copy_out }}"

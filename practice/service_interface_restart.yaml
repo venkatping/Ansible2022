@@ -1,0 +1,10 @@
+---
+- name: restarting networkmanager
+  hosts: dev
+  become: true
+  tasks:
+          - name: restart interface enp0s3 using  NetworkManager
+            service:
+                    name: NetworkManager
+                    state: restarted
+                    args: enp0s3

@@ -1,0 +1,17 @@
+---
+- name: install and start httpd service
+  hosts: dev
+  become: true
+  tasks:
+          - name: install httpd package
+            yum:
+                    name: httpd
+                    state: installed
+                    update_cache: yes
+            when: ansible_distribution == "CentOS"
+
+          - name: restart and enable httpd service
+            service:
+                    name: httpd
+                    state: restarted
+                    enabled: yes

@@ -1,0 +1,15 @@
+---
+- name: httpd package in client server
+  hosts: dev
+  become: true
+  gather_facts: false
+  tasks:
+          - name: install httpd package
+            yum:
+                    name: httpd
+                    state: installed
+                    update_cache: no
+          - name: start httpd service
+            systemd:
+                    name: httpd
+                    state: stopped

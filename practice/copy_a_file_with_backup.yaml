@@ -1,0 +1,13 @@
+---
+- name: using copy module to copy a file
+  hosts: dev
+  become: true
+  tasks:
+          - name: copy chrony.conf file
+            copy:
+                    src: /etc/chrony/chrony.conf
+                    dest: /etc/chrony.conf
+                    backup: yes
+            register: command_output
+          - debug:
+                  msg: "{{ command_output }}"

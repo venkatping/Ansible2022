@@ -1,0 +1,17 @@
+---
+- name: write content to file
+  hosts: dev
+  gather_facts: no
+  tasks:
+          - name: write content to first file
+            copy:
+                    dest: /home/ansible/test_file
+                    content: "Hello Ansible!\n"
+            register: copy_out
+          - debug: var=copy_out
+          - name: write content to second file
+            copy:
+                    dest: /home/ansible/test_file1
+                    content: "Hello, {{ ansible_host }} \n"
+            register: copy_out1
+          - debug: var=copy_out1

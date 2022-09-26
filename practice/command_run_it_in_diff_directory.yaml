@@ -1,0 +1,14 @@
+---
+- name: create a file in different directory
+  hosts: dev
+  become: true
+  tasks:
+          - name: make sure directory exists
+            file:
+                    path: /tmp/new_dir
+                    state: directory
+          - name: create file in /tmp/new_dir
+            command: touch test_file
+            args:
+                    chdir: /tmp/new_dir
+

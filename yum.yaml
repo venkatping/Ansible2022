@@ -1,0 +1,10 @@
+---
+- name: update kernel
+  hosts: dev
+  become: true
+  tasks:
+          - name: patch the server using yum module
+            yum:
+                    name: "*"
+                    update_cache: yes
+                    state: latest
