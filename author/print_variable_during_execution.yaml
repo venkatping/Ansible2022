@@ -1,0 +1,10 @@
+---
+- name: print a variable
+  hosts: dev
+  vars:
+    fruit: "apple"
+  tasks:
+        - name: print a variable
+          debug:
+            msg: "our fruit is {{ fruit }}"
+            verbosity: 2
