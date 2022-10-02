@@ -1,0 +1,15 @@
+---
+- name: using pause module to pause a playbook for certain amount of time
+  hosts: dev
+  become: false
+  vars:
+     wait_seconds: 10
+  tasks:
+          - name: pausing for "{{ wait_seconds | int }}" seconds
+            pause:
+                    seconds: "{{ wait_seconds | int }}"
+          - name: debug message
+            debug:
+                 msg: Playbook Executed
+
+

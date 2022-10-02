@@ -1,0 +1,13 @@
+---
+- name: list installed packages in centos server
+  hosts: dev
+  become: true
+  tasks:
+          - name: List Installed Packages
+            yum:
+                    list: installed
+            register: reg_yum_output
+          - name: debug output
+            debug: 
+               msg: "{{ reg_yum_output.results | map(attribute='name') | join(',') }}"
+               #"{{ reg_yum_output.results | map(attribute='name') | list }}"
