@@ -1,0 +1,8 @@
+---
+- name: pass variable in command line
+  hosts: dev
+  tasks:
+          - name: debug message
+            debug:
+                    msg: "fruit is {{ fruit }}"
+#ansible-plabook playbook.yaml --extra-vars="fruit=apple"

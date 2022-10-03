@@ -1,0 +1,13 @@
+#if i use > symbol then the content will print in same line
+---
+- name: folded block
+  hosts: dev
+  vars:
+          variable: >
+                  This is my First Line
+                  This is my Second Line
+                  This is my Third Line
+  tasks:
+          - name: folded block example
+            debug:
+                    msg: "{{ variable.split('\n') }}"

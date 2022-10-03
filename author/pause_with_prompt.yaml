@@ -1,0 +1,8 @@
+#pause with prompt module does not give you an option to answer yes or no. Instead it expects the user to press Ctrl+C and then a for abort. To continue the user simply needs to press Enter.
+#---
+- name: using prompt paramter with pause module
+  hosts: dev
+  tasks:
+          - name: prompt with pause
+            pause:
+                    prompt: confirm yes/no

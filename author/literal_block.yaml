@@ -1,0 +1,13 @@
+#if i use | symbol the content will print exactly the same way
+---
+- name: literal block
+  hosts: dev
+  vars:
+     variable: |
+          This is my first line
+          This is my second line
+          This is my third line
+  tasks:
+          - name: print variable
+            debug:
+                    msg: "{{ variable.split('\n') }}"
