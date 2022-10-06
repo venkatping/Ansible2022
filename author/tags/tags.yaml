@@ -1,0 +1,32 @@
+#ansible-playbook tags.yaml --skip-tags=tag1
+#ansible-playbook tags.yaml --skip-tags=tag2
+#ansible-playbook tags.yaml --skip-tags=tag3
+#ansible-playbook tags.yaml --skip-tags=tag4
+#ansible-playbook tags.yaml --tags=tag1
+#ansible-playbook tags.yaml --tags=tag2
+#ansible-playbook tags.yaml --tags=tag3
+#ansible-playbook tags.yaml --tags=tag4
+#ansible-playbook tags.yaml --tags=all
+#ansible-playbook tags.yaml --tags=tag1,tag4
+#ansible-playbook tags.yaml --skip-tags=tag1,tag4
+---
+- name: working with tags
+  hosts: dev
+  gather_facts: false
+  tasks:
+          - name: TAG1
+            debug:
+                    msg: "This is tag1"
+            tags: tag1
+          - name: TAG2
+            debug:
+                    msg: "This is tag2"
+            tags: tag2
+          - name: TAG3
+            debug:
+                    msg: "This is tag3"
+            tags: tag3
+          - name: TAG4
+            debug:
+                    msg: "This is tag4"
+            tags: tag4

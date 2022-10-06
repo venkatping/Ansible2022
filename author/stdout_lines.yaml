@@ -1,0 +1,21 @@
+---
+- name: stdout_lines
+  hosts: dev
+  tasks:
+          - name: using stdout_lines
+            command: uptime
+            register: com_out
+          - name: debug message
+            debug: var=com_out.stdout_lines
+          - name: debug message
+            debug:
+                   msg: "{{ com_out.stdout_lines }}"
+
+          - name: list files and folders in current directory
+            shell: ls -l *
+            register: shell_out
+          - name: debug message
+            debug: var=shell_out.stdout_lines
+          - name: debug message
+            debug:
+                    msg: "{{ shell_out.stdout_lines }}"

@@ -1,0 +1,7 @@
+---
+- name: run playbook in particular host
+  hosts: minikube
+  tasks:
+          - name: debug message
+            debug:
+                    msg: "{{ ansible_env.HOME }}"

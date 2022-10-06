@@ -1,0 +1,19 @@
+---
+- name: avoid printing /n at end of the output line
+  hosts: dev
+  vars:
+    variable1: |-	#we are using - because to avoid printing \n in end of the output line
+      exactly as you see
+      will appear these three
+      lines of poetry
+    variable2: >-
+      this is really a
+      single line of text
+      despite appearences
+  tasks:
+    - name: print variale1
+      debug:
+        var: variable1
+    - name: print variable2
+      debug:
+        var: variable2

@@ -1,0 +1,7 @@
+---
+- name: retrieve env variables from client server
+  hosts: dev
+  tasks:
+          - name: env varaibles
+            debug:
+                    msg: "{{ ansible_env }}"

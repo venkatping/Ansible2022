@@ -1,0 +1,8 @@
+---
+- name: set proxy env variable
+  hosts: dev
+  tasks:
+          - name: set env proxy variable
+            command: echo $http_proxy
+            environment:
+                    http_proxy: http://proxy.example.com:8080

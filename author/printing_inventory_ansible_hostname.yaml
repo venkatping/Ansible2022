@@ -1,0 +1,13 @@
+---
+- name: diff between inventory and ansible hostname
+  hosts: dev
+  tasks:
+          - name: inventory hostname
+            debug:
+                    msg: "{{ inventory_hostname }}"
+          - name: ansible hostname
+            debug:
+                    msg: "{{ ansible_hostname }}"
+          - name: printing fqdn
+            debug:
+                    msg: "{{ ansible_fqdn }}"

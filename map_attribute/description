@@ -1,0 +1,25 @@
+Ansible Map Filter does two things:
+-----------------------------------
+
+1. It applies a filter on a sequence of objects
+2. It looks up an attribute.
+
+This is useful when dealing with lists of objects but you are really only interested in a certain value of it
+
+The basic usage of map is to look up an attribute.  Let’s cover it first
+
+Example userdata
+----------------
+
+names: [ {
+        "first": "Paul",
+        "last": "Thompson",
+        "mobile": "+1-234-31245543",
+        "ctc": "100000",
+        "address": {
+          "city": "LasVegas",
+          "country": "USA"
+        }
+
+{{ names | map(attribute='address') | map(attribute='city') }}  
+

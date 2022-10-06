@@ -1,0 +1,8 @@
+#ansible-playbook playbook.yaml --limit=<hostname>
+---
+- name: run play in particular host
+  hosts: dev
+  tasks:
+          - name: debug message
+            debug:
+                    msg: "{{ ansible_hostname }}"

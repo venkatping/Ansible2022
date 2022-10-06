@@ -1,0 +1,8 @@
+#ansible-playbook third_method.yaml -e "HOSTS=minikube"
+---
+- name: run playbook in particular host
+  hosts: "{{ HOSTS }}"
+  tasks:
+          - name: debug message
+            debug:
+                    msg: "{{ ansible_env.SHELL }}"

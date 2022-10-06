@@ -1,0 +1,9 @@
+#ansible-playbook playbook.yaml -v
+---
+- name: working with environment variable
+  hosts: dev
+  tasks:
+          - name: display EXAMPLE
+            command: echo $EXAMPLE
+            environment:
+                    EXAMPLE: test2

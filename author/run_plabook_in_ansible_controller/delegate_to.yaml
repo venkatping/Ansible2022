@@ -1,0 +1,11 @@
+---
+- name: execute command in particular host
+  hosts: dev
+  tasks:
+          - name: hostname
+            command: hostname
+            delegate_to: localhost
+            register: com_out
+          - name: debug message
+            debug:
+                    msg: "{{ com_out.stdout }}"

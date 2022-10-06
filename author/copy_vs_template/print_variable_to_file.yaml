@@ -1,0 +1,13 @@
+---
+- name: using copy module to print a variable to a file
+  hosts: dev
+  gather_facts: false
+  vars:
+          fruit: "apple\n"
+          output_file: "output.txt"
+  tasks:
+          - name: write variable to a file
+            copy:
+                    content: "{{ fruit }}"
+                    dest: "{{ output_file }}"
+

@@ -1,0 +1,10 @@
+---
+- name: retrieve specific env variable
+  hosts: dev
+  tasks:
+          - name: retrieve specific variable
+            debug:
+                    msg: "{{ ansible_env.HOME }}"
+          - name: retrieve shell variable
+            debug:
+                    msg: "shell variable {{(lookup('env','SHELL'))}}"
