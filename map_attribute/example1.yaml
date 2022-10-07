@@ -39,3 +39,16 @@
           - name: print only country
             debug:
                     msg: "{{ names | map(attribute='address') | map(attribute='country') | list }}"
+          - name: print only modbile numbers
+            debug:
+                    msg: "{{ names | map(attribute='mobile') | join(',') }}"
+          - name: convert letters to uppercase
+            debug:
+                    msg: "{{ names | map(attribute='first') | map('upper') | list }}"
+          - name: convert the CTC value to float value
+            debug:
+                    msg: "{{ names | map(attribute='ctc') | map('float') | list }}"
+          - name: appending USD to CTC value
+            debug:
+                    msg: "{{ names | map(attribute='ctc') | product(['USD']) | map('join',' ') | list }}"
+                   

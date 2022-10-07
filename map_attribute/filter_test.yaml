@@ -1,0 +1,10 @@
+---
+- name: filter test
+  hosts: dev
+  tasks:
+          - name: it prints saurav and naveen if we give [0,1]
+            debug:
+                    msg: "{{ [0,1] | map('extract', ['saurav','naveen','sai']) | list}}"
+          - name: it prints naveen and sai if we give [1,2]
+            debug:
+                    msg: "{{ [1,2] | map('extract', ['saurav','naveen','sai']) | list}}"

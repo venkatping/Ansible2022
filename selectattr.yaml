@@ -1,0 +1,7 @@
+---
+- name: selectattr demo
+  hosts: dev
+  tasks:
+          - name: all features
+            debug:
+                    msg: "{{ (ansible_facts.enp0s3.features | dict2items | selectattr('value', 'match', 'on')) | list }}"
