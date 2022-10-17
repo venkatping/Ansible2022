@@ -1,0 +1,15 @@
+---
+- name: print date and time without using facts
+  hosts: dev
+  gather_facts: false
+  tasks:
+          - name: date and time
+            debug:
+                    msg: "{{ lookup('pipe', 'date +%Y-%m-%d@%H:%M:%S') }}"
+          - name:  iso8601 Manual
+            debug:
+                    msg: "{{ lookup('pipe', 'date +%Y-%m-%dT%H:%M:%S%z') }}"
+          - name: ISO8601
+            debug:
+                    msg: "{{ lookup('pipe', 'date --iso8601=seconds') }}"
+            ignore_errors: true

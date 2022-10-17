@@ -1,0 +1,11 @@
+---
+- name: print date and time using gather_facts
+  hosts: dev
+  gather_facts: true
+  tasks:
+          - name: date of client host
+            debug:
+                    msg: "{{ ansible_date_time.date }}"
+          - name: time of client host
+            debug:
+                    msg: "{{ ansible_date_time.time }}"
