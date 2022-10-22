@@ -1,0 +1,9 @@
+---
+- name: Retrieve remote servers env variables
+  hosts: dev
+  become: false
+  gather_facts: true
+  tasks:
+          - name: env variables
+            debug:
+                    msg: "{{ ansible_env.MAIL }}"

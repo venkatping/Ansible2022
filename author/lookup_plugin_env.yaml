@@ -1,0 +1,14 @@
+---
+- name: lookup plugin usage
+  hosts: dev
+  gather_facts: true
+  tasks:
+          - name: display HOME, This will print local servers env variables
+            debug:
+                    msg: "{{ lookup('env','HOME') }}"
+          - name: print multiple env variables
+            debug:
+                    msg: "{{ lookup('env', 'HOME','SHELL','MAIL') }}"
+          - name: display HOME, This will print remote servers env variables
+            debug:
+                    msg: "{{ ansible_env.HOME }}"
