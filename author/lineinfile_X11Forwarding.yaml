@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  become: true
+  tasks:
+          - name: enable X11Forwarding
+            lineinfile:
+                    path: /etc/ssh/sshd_config
+                    state: present
+                    line: "X11Forwarding yes"
+                    regexp: "^X11Forwarding"

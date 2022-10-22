@@ -1,0 +1,11 @@
+---
+- name: magic variables demo
+  hosts: dev
+  gather_facts: false
+  tasks:
+    - name: magic variable
+      debug:
+        msg: "{{ playbook_dir }}"
+    - name: using var, you need to write like this
+      debug:
+              var: playbook_dir

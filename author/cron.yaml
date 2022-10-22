@@ -1,0 +1,14 @@
+---
+- name: cron module demo
+  hosts: dev
+  tasks:
+          - name: example cron demo
+            cron:
+                    name: test
+                    minute: "*"
+                    hour: "*"
+                    day: "*"
+                    month: "*"
+                    weekday: "*"
+                    job: "sh /home/ansible/script.sh"
+

@@ -1,0 +1,14 @@
+---
+- name: copy module demo with fileglob
+  hosts: dev
+  tasks:
+          - name: copying multiple files
+            copy:
+                    src: "{{ item }}"
+                    dest: "/home/ansible/"
+                    owner: ansible
+                    group: ansible
+                    mode: 0777
+            with_fileglob:
+                    - "/home/ansible/ansible/author/test_dir/*.txt"
+

@@ -1,0 +1,10 @@
+---
+- name: service module demo
+  hosts: dev
+  become: true
+  tasks:
+    - name: restart sshd
+      service:
+        name: sshd
+        state: restarted
+        enabled: true

@@ -1,0 +1,11 @@
+---
+- name: reboot module demo
+  hosts: dev
+  become: true
+  tasks:
+    - name: test connection
+      ansible.builtin.reboot:
+        msg: "reboot initiated by ansible"
+        pre_reboot_delay: 5     #seconds
+        post_reboot_delay: 10   #seconds
+        test_command: "whoami"

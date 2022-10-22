@@ -1,0 +1,11 @@
+---
+- name: copy module demo
+  hosts: dev
+  tasks:
+    - name: copy file to remote hosts
+      ansible.builtin.copy:
+        src: "/home/ansible/ansible/author/testfile"
+        dest: "/home/ansible/"
+        owner: ansible
+        group: ansible
+        mode: 0755

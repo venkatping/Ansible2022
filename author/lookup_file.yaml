@@ -1,0 +1,9 @@
+---
+- name: Read contents of a file using lookup plugin
+  hosts: dev
+  vars:
+          contents: "{{ (lookup('file','example.txt')) }}"
+  tasks:
+          - name: read content of a file
+            debug:
+                    msg: "This content inside file is: {{ contents }}"

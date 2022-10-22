@@ -1,0 +1,25 @@
+---
+- name: fetch module demo
+  hosts: dev
+  vars:
+          FILE: "/home/ansible/testfile"
+          dump_filename: "remotefile" #The file "testfile" will save with name "remotefile", make flat as true otherwise it will create directory name as "remotefile"
+  tasks:
+          - name: fetch file
+            fetch:
+                    src: "{{ FILE }}"
+                    dest: "{{ dump_filename }}"
+                    flat: true
+---
+- name: fetch module demo
+  hosts: dev
+  vars:
+          FILE: "/home/ansible/testfile"
+          dump_dir: "dir_name"
+  tasks:
+          - name: fetch file
+            fetch:
+                    src: "{{ FILE }}"
+                    dest: "{{ dump_dir }}"
+                    #flat: true
+

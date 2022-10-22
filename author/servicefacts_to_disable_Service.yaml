@@ -1,0 +1,17 @@
+---
+- name: service module demo
+  hosts: dev
+  vars:
+          disable_service:
+                  - "rsyncd.service"
+  become: true
+  tasks:
+          - name: populate service facts
+            service_facts:
+          - name: disable and stop service
+            service:
+                    name: "{{ item }}"
+                    state: stopped
+                    enabled: true
+            when: "item in services"
+            with_items: "{{ disable_service }}"

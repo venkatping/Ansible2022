@@ -1,0 +1,17 @@
+---
+- name: service module demo
+  hosts: dev
+  vars:
+    services_on_boot:
+      - "rsyncd.service"
+  become: true
+  tasks:
+    - name: populate sevice facts
+      service_facts:
+    - name: enable services on boot
+      service:
+           name: "{{ item }}"
+           state: started
+           enabled: true
+      when: "item in services" #services item will be created by service_facts module
+      with_items: "{{ services_on_boot }}"
