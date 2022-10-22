@@ -1,0 +1,19 @@
+---
+- name: root login enabled
+  hosts: dev
+  gather_facts: true
+  become: true
+  tasks:
+    - name: ssh PermitRootLogin
+      lineinfile:
+        dest: /etc/ssh/sshd_config
+        regexp: '^PermitRootLogin'
+        line: 'PermitRootLogin yes'
+        state: present
+      notify: ssh restart
+  handlers:
+    - name: ssh restart
+      service:
+          name: sshd
+          state: restarted
+
