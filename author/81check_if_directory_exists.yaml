@@ -1,0 +1,18 @@
+---
+- name: file module demo
+  hosts: dev
+  gather_facts: true
+  vars:
+          directory: "/tmp"
+  tasks:
+          - name: Directory check
+            stat:
+                    path: "{{ directory }}"
+            register: dir_data
+          - name: debug message
+            debug:
+                    msg: "{{ dir_data }}"
+          - name: Report Directory exists
+            debug:
+                  msg: "The {{ directory }} exists"
+            when: dir_data.stat.isdir is defined and dir_data.stat.isdir

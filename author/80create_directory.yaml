@@ -1,0 +1,13 @@
+---
+- name: file module demo
+  hosts: dev
+  vars:
+          mydir: "/home/ansible/ansible_dir"
+  tasks:
+          - name: ansible_dir directory will be created
+            file:
+                    path: "{{ mydir }}"
+                    state: directory
+                    mode: 0744
+                    owner: ansible
+                    group: ansible
