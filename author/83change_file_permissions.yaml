@@ -1,0 +1,12 @@
+---
+- name: change file permissions
+  hosts: dev
+  vars:
+          myfile: "/home/ansible/test.txt"
+  tasks:
+          - name: change file permissions
+            file:
+                    path: "{{ myfile }}"
+                    owner: ansible
+                    group: ansible
+                    mode: 0644

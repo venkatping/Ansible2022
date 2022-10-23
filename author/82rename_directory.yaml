@@ -1,0 +1,25 @@
+---
+- name: rename file or directory
+  hosts: dev
+  vars:
+          mysrc: "/home/ansible/test_dir/"              #At the end / is mandatory
+          mydest: "/home/ansible/rename_test_dir/"      #At the end / is mandatory
+  tasks:
+          - name: check if file exists
+            stat:
+                    path: "{{ mysrc }}"
+            register: check_file_name
+          - name: print debug
+            debug:
+                    var: check_file_name
+          - name: copy file with new name
+            copy:
+                    src: "{{ mysrc }}"
+                    remote_src: yes
+                    dest: "{{ mydest }}"
+            when: check_file_name.stat.exists
+          - name: Remove old file
+            file:
+                    dest: "{{ mysrc }}"
+                    state: absent
+            when: check_file_name.stat.exists
