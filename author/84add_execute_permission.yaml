@@ -1,0 +1,10 @@
+---
+- name: file module demo
+  hosts: dev
+  vars:
+          myfile: "/home/ansible/test.txt"
+  tasks:
+          - name: set execution permission
+            file:
+                    dest: "{{ myfile }}"
+                    mode: 'a+x'
