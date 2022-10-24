@@ -1,0 +1,12 @@
+---
+- name: file module demo
+  hosts: dev
+  vars:
+          myfile: "/home/ansible/myfile.txt"
+          myhlink: "/home/ansible/hard_link" #hard link also need to create in same path
+  tasks:
+          - name: create hard link
+            file:
+                    src: "{{ myfile }}"
+                    dest: "{{ myhlink }}"
+                    state: hard

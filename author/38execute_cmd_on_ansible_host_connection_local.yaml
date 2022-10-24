@@ -1,0 +1,8 @@
+#ansible-playbook test.yaml --connection=local
+---
+- name: localhost demo
+  hosts: dev
+  tasks:
+          - name: print hostname
+            debug:
+                    msg: "{{ ansible_hostname }}"
