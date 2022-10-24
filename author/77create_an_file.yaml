@@ -1,0 +1,9 @@
+---
+- name: create an empy file
+  hosts: dev
+  gather_facts: false
+  tasks:
+          - name: touch file
+            file:
+                    path: /home/ansible/oxygen
+                    state: touch

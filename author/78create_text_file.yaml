@@ -1,0 +1,11 @@
+---
+- name: copy module demo
+  hosts: dev
+  gather_facts: false
+  tasks:
+          - name: create text file
+            copy:
+                    dest: /home/ansible/os
+                    content: |
+                            oxygen os is my favorite os
+                            it is merged its partership with color os

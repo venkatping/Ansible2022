@@ -1,0 +1,19 @@
+---
+- name: file module demo
+  hosts: dev
+  vars:
+          myfile: "/home/ansible/os"
+  gather_facts: false
+  tasks:
+          - name: check if file exists
+            stat:
+                    path: "{{ myfile }}"
+            register: file_data
+          - name: Report file exists
+            debug:
+                    msg: "The file {{ myfile }} exist"
+            when: file_data.stat.exists
+          - name: Report file missing
+            debug:
+                    msg: "The file {{ myfile }} not exist"
+            when: not file_data.stat.exists

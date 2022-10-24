@@ -1,0 +1,13 @@
+---
+- name: working on remote environment variables
+  hosts: dev
+  gather_facts: false
+  environment:
+    EXAMPLE: test1
+  tasks:
+    - name: display EXAMPLE
+      command: echo $EXAMPLE    #This takes playlevel environment and prints "test1"
+    - name: display EXAMPLE
+      command: echo $EXAMPLE    #This takes tasklevel environment and prints "test2"
+      environment:
+        EXAMPLE: test2
