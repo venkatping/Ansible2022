@@ -1,0 +1,11 @@
+#ansible-playbook 32print_txt_or_variable_during_execution.yaml -vv --extra-vars='fruit=banana'
+---
+- name: debug module demo
+  hosts: all
+  vars:
+    fruit: "apple"
+  tasks:
+    - name: debug message
+      ansible.builtin.debug:
+        msg: "our fruit is {{ fruit }}"
+        verbosity: 2
