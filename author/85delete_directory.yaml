@@ -1,0 +1,10 @@
+---
+- name: file module demo
+  hosts: dev
+  vars:
+          mydir: "/home/ansible/new_dir/"
+  tasks:
+          - name: directory "{{ mydir }}" not present
+            file:
+                    path: "{{ mydir }}"
+                    state: absent

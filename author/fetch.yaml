@@ -10,16 +10,16 @@
                     src: "{{ FILE }}"
                     dest: "{{ dump_filename }}"
                     flat: true
+
 ---
 - name: fetch module demo
   hosts: dev
   vars:
           FILE: "/home/ansible/testfile"
-          dump_dir: "dir_name"
+          dump_dir: "dir_name" #it will create directory and inside that testfile will be stored
   tasks:
           - name: fetch file
             fetch:
                     src: "{{ FILE }}"
                     dest: "{{ dump_dir }}"
                     #flat: true
-

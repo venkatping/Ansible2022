@@ -1,0 +1,13 @@
+---
+- name: file module demo
+  hosts: dev
+  vars:
+          mylink: "/home/ansible/cpu_info"
+          mysrc: "/proc/cpuinfo"
+  tasks:
+          - name: create symlink
+            file:
+                    src: "{{ mysrc }}"
+                    dest: "{{ mylink }}"
+                    state: link
+
