@@ -1,0 +1,29 @@
+---
+- name: mount module demo
+  hosts: dev
+  vars:
+          url: "{{ //windows-pc/share }}"
+          username: "{{ venkat }}"
+          password: "{{ password }}"
+          mountpoint: "{{ /share }}"
+  become: true
+  tasks:
+          - name: make sure cifs packages must present
+            yum:
+                    name: cifs-utils
+                    state: present
+          - name: make sure "{{ mountpoint }}" directory exists
+            file:
+                    path: "{{ mountpoint }}"
+                    state: directory
+                    mode: 0755
+                    owner: ansible
+                    group: ansible
+          - name: now mount cifs "{{ url }}" share to linux server
+            cifs:
+                    src: "{{ url }}"
+                    path: "{{ mountpoint }}"
+                    fstype: cifs
+                    opts: "{{ username }}","{{ password }}"
+                    state: mounted
+

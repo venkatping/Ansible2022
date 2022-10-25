@@ -1,0 +1,19 @@
+---
+- name: unarchive module demo
+  hosts: dev
+  become: false
+  vars:
+          myurl: "https://releases.ansible.com/ansible/ansible-2.9.25.tar.gz"
+  tasks:
+          - name: validate packages
+            yum:
+                    name:
+                            - unzip
+                            - tar
+                    state: present
+            become: true
+          - name: unarchive master file
+            unarchive:
+                    src: "{{ myurl }}"
+                    dest: "/home/ansible/archive/"
+                    remote_src: true

@@ -1,0 +1,38 @@
+---
+- name: mount module demo
+  hosts: dev
+  become: true
+  vars:
+          mynfs: "192.168.0.109:/nfs"
+          mountpoint: "/nfs"
+          permission: '0777'
+          myopts: 'rw,sync'
+  tasks:
+          - name: packages to be exist in server
+            yum:
+                    name:
+                     - 'nfs-utils'
+                     - 'nfs4-acl-tools'
+                    state: present
+            when: ansible_distribution == 'RedHat'
+          - name: utility present debian-like
+            apt:
+                    name:
+                     - 'nfs-common'
+                     - 'nfs4-acl-tools'
+                    state: present
+            when: ansible_distribution == 'Debian'
+          - name: check mountpoint exist
+            file:
+                    path: "{{ mountpoint }}"
+                    state: directory
+                    mode: "{{ permission }}"
+                    owner: root
+                    group: root
+          - name: mount network share
+            mount:
+                    src: "{{ mynfs }}"
+                    path: "{{ mountpoint }}"
+                    state: mounted
+                    fstype: nfs
+                    opts: "{{ myopts }}"
