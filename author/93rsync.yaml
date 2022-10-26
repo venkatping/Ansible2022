@@ -1,0 +1,18 @@
+---
+- name: synchronize module demo
+  hosts: localhost
+  vars:
+          source: "/home/ansible/ansible/author/examples" #if you wan to copy examples directory don't give / at the end, if you want to copy contents present in examples directory give / at the end
+          destination: "/home/ansible/examples-backup"
+  tasks:
+          - name: rsync installed
+            yum:
+                    name: rsync
+                    state: present
+            become: true
+            when: ansible_distribution == 'RedHat'
+          - name: rsync
+            synchronize:
+                    src: "{{ source }}"
+                    dest: "{{ destination }}"
+            delegate_to: 127.0.0.1
