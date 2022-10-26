@@ -1,0 +1,17 @@
+---
+- name: find module demo
+  hosts: dev
+  vars:
+    mypath: "/home/ansible/example"
+  tasks:
+    - name: search files
+      find:
+              paths: "{{ mypath }}"
+              hidden: yes
+              recurse: true
+              file_type: any
+              patterns: '*.png'
+      register: found_files
+    - name: print files
+      debug:
+              var: found_files
