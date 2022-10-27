@@ -1,0 +1,16 @@
+---
+- name: search demo
+  hosts: dev
+  become: true
+  vars:
+          myfile: "/etc/ssh/sshd_config"
+          myline: "#PermitRootLogin yes" #if exact line is present then all tasks will be green, if not then the task will get failed
+  tasks:
+          - name: string found
+            lineinfile:
+                    name: "{{ myfile }}"
+                    line: "{{ myline }}"
+                    state: present
+            check_mode: true
+            register: string_output
+            failed_when: (string_output is changed) or (string_output is failed)
