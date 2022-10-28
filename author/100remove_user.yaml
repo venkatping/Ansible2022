@@ -1,0 +1,10 @@
+---
+- name: user module demo
+  hosts: dev
+  become: true
+  tasks:
+          - name: delete user
+            user:
+                    name: techie
+                    state: absent
+                    remove: true #remove is used to remove the users home directory, just like (userdel –r)

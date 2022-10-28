@@ -1,0 +1,21 @@
+---
+- name: user module demo
+  hosts: dev
+  become: true
+  tasks:
+          - name: user example present
+            user:
+                    name: techie
+                    password: "{{ 'password' | password_hash('sha512', 'mysecretsalt') }}"
+                    groups:
+                            - ansible
+                            - sai
+                    state: present
+                    shell: "/bin/bash"
+                    system: false
+                    create_home: true
+                    home: "/home/techie"
+                    comment: "techielinux"
+                    generate_ssh_key: true #it will generate .ssh directory with id_rsa and id_rsa.pub keys
+#use of "mysecretsalt" is you can run any times the playbook the status of task will show green(unchanged)
+#if you do not give "mysecretsalt" when you run the playbook the task will show in yellow color
