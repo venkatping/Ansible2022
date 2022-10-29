@@ -1,0 +1,11 @@
+---
+- name: group module demo
+  hosts: dev
+  become: true
+  vars:
+          mygroup: "linuxgroup"
+  tasks:
+          - name: delete group
+            group:
+                    name: "{{ mygroup }}"
+                    state: absent
