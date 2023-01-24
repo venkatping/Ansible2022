@@ -1,0 +1,19 @@
+---
+- name: Selectattr example with dictionary
+  hosts: localhost
+  gather_facts: false
+  vars:
+    users:
+      venkat:
+         college: vivekanda
+         origin: buchi
+      naveen:
+         college: high
+         origin: reddy
+      sai:
+         college: school
+         origin: palem
+  tasks:
+    - name: Select users with a specific UID
+      debug:
+              msg: "{{ users | dict2items | selectattr('value', 'eq', {'college': 'high', 'origin': 'reddy'})| map(attribute='key')| list }}"
