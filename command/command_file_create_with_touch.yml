@@ -1,7 +1,0 @@
----
-- hosts: dev
-  become: true
-  become_user: root
-  tasks:
-      - name: create a test file
-        command: touch /tmp/test_file
